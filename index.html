@@ -30,11 +30,12 @@
    </div>
   </div>
   <script>
-    var a= document.getElementById("main-header");
-    a.style.border = "2px solid black";
-    var b=document.getElementsByClassName("title");
-    b[0].style.color="green";
-    b[0].style.fontWeight="bold";
+    var a=document.getElementsByTagName("li");
+    a[2].style.backgroundColor="green";
+    for(let i=0;i<a.length;i++){
+        a[i].style.color="gold";
+        a[i].style.fontWeight="bold";
+    }
 
     
   </script>

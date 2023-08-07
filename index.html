@@ -51,7 +51,6 @@
         ul.addEventListener("click",remove);
         form.addEventListener("submit",addItem);
         filter.addEventListener("keyup",checkItems);
-        //filter
        
         //add items
         function addItem(e){
@@ -78,7 +77,6 @@
                 }
             }
         }
-        
         function checkItems(e){
           var text=e.target.value.toLowerCase();
           var items=ul.getElementsByTagName("li");
@@ -89,7 +87,6 @@
               iter.style.display="block";
             }else{
               iter.style.display="none";
-
             }
           })
         }

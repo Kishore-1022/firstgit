@@ -26,17 +26,20 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
+      
+      
     </ul>
    </div>
   </div>
   <script>
-    var a=document.getElementsByTagName("li");
-    a[2].style.backgroundColor="green";
-    for(let i=0;i<a.length;i++){
-        a[i].style.color="gold";
-        a[i].style.fontWeight="bold";
-    }
-
+    var a=document.getElementById("items");
+    var b=document.createElement("li");
+    b.setAttribute("class", "newlist");
+    b.textContent="Item 5";
+    b.style.display="inline-block";
+    b.style.border="1px solid rgba(0,0,0,.125)";
+    b.style.padding="0.75rem 1.25rem";
+    a.appendChild(b);
     
   </script>
 

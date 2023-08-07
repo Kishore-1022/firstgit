@@ -25,11 +25,12 @@
         <h2 class="title">Add Items</h2>
         <form id="addForm" class="form-inline mb-3">
           <input type="text" class="form-control mr-2" id="item">
-          <input type="submit" class="btn btn-dark" value="Submit">
+          <!-- <input type="text" class="form-control mr-2" id="item"> -->
+          <input type="submit" class="btn btn-dark" value="Submit" id="sub">
         </form>
         <h2 class="title">Items</h2>
         <ul id="items" class="list-group">
-          <li class="list-group-item">Item 1 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
+          <li class="list-group-item">Item 1<button class="btn btn-danger btn-sm float-right delete">x</button></li>
           <li class="list-group-item">Item 2 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
           <li class="list-group-item">Item 3 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
           <li class="list-group-item">Item 4 <button class="btn btn-danger btn-sm float-right delete">X</button></li>
@@ -37,16 +38,29 @@
        </div>
       </div>
       <script>
+        var input=document.createElement("input");
         var form=document.getElementById("addForm");
         var ul=document.getElementById("items");
+        var filter=document.getElementById("filter");
+
+        input.className="form-control mr-2";
+        input.type="text";
+        input.id="item";
+        form.insertBefore(input,form.children[1]);
+       
         ul.addEventListener("click",remove);
         form.addEventListener("submit",addItem);
+        filter.addEventListener("keyup",checkItems);
+        //filter
+       
+        //add items
         function addItem(e){
             e.preventDefault();
-            var add=document.getElementById("item");
+            var add=document.querySelectorAll("#item");
             var li=document.createElement("li");
             li.className="list-group-item";
-            li.append( document.createTextNode(add.value));
+            li.append(document.createTextNode(add[0].value+" "+add[1].value));
+            /* li.append(document.createTextNode(add[1].value)); */
 
             //to create btn
             var btn=document.createElement('button');
@@ -55,6 +69,7 @@
             li.append(btn);
             ul.append(li);
         }
+        //remove
         function remove(e){
             if(e.target.classList.contains("delete")){
                 if(confirm("Are you going to Delete?"));{
@@ -62,11 +77,22 @@
                     ul.removeChild(li);
                 }
             }
-
-            //console.log("kishore");
         }
+        
+        function checkItems(e){
+          var text=e.target.value.toLowerCase();
+          var items=ul.getElementsByTagName("li");
+          Array.from(items).forEach(function(iter){
+            var name=iter.firstChild.textContent;
+            console.log(name)
+            if(name.toLowerCase().indexOf(text) != -1){
+              iter.style.display="block";
+            }else{
+              iter.style.display="none";
 
+            }
+          })
+        }
       </script>
-    
 </body>
 </html>

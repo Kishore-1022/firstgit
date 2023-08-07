@@ -26,18 +26,39 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
-      
-      
     </ul>
    </div>
   </div>
   <script>
-    var a=document.getElementsByClassName("list-group-item");
-    a[1].style.backgroundColor="green";
-    a[2].style.display="none";
+    var newDiv=document.createElement('div');
+    newDiv.className="newDiv";
+    newDiv.id="div";
+    var nodes=document.createTextNode("hello Word");
+    newDiv.append(nodes);
+    var container=document.querySelector('header .container');
+    var h1=document.querySelector("header h1");
+    container.insertBefore(newDiv,h1);
+    var newLi=document.createElement("li");
+    newLi.className="li";
+    newLi.id="li";
+    newLi.textContent="Hello world";
+    newLi.style.display="inline-block";
+    newLi.style.border="1px solid rgba(0,0,0,.125)";
+    newLi.style.padding= "0.75rem 1.25rem";
+    var ul=document.getElementById('items');
+    var li=document.getElementsByClassName("list-group-item");
+    ul.insertBefore(newLi,li[0]);
+    //console.log(li);
+    
 
-    //i cant get your question correctly if i want to make empty the 3rd item r delete it
-    //a[2].textContent=" ";
+
+  
+
+
+    
+
+
+    
    
   </script>
 
